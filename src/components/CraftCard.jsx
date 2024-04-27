@@ -16,8 +16,7 @@ const CraftCard = ({craft}) => {
                 </h2>
                 <div className='flex items-center'>
                     <p className='text-lg font-semibold'>${price}</p>
-                    <div className={`badge text-white ${stock_status === 'In stock' ? 'bg-orange-400' : 'bg-green-400'}`}>{stock_status[0].toUpperCase() + stock_status.slice(1)}</div>
-                    {/* <p className='text-right'>{stock_status}</p> */}
+                    <div className={`badge text-white ${stock_status === 'In stock' ? 'bg-orange-400' : 'bg-green-400'}`}>{stock_status}</div>
                 </div>
                 <p>{short_description}</p>
                 <div className="card-actions justify-end mt-5">
