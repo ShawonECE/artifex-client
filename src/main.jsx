@@ -14,6 +14,7 @@ import AddCraft from './components/AddCraft.jsx';
 import { HelmetProvider } from 'react-helmet-async';
 import AuthProvider from './components/AuthProvider.jsx';
 import CraftDetails from './components/CraftDetails.jsx';
+import CraftByCategory from './components/CraftByCategory';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
         path: "/crafts",
         element: <Crafts />,
         loader: () => fetch(`http://localhost:3000/sculptures`)
+      },
+      {
+        path: "/crafts-by-category/:category",
+        element: <CraftByCategory />,
+        loader: ({params}) => fetch(`http://localhost:3000/sculptures/categories/${params.category}`)
       },
       {
         path: "/details/:id",
