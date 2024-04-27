@@ -22,7 +22,6 @@ const Banner = () => {
             <SwiperSlide><img className='w-full' src="https://i.ibb.co/9wsV1LF/art-banner2.jpg" alt="" /></SwiperSlide>
             <SwiperSlide><img className='w-full' src="https://i.ibb.co/303vwfD/art-banner3.jpg" alt="" /></SwiperSlide>
             <SwiperSlide><img className='w-full' src="https://i.ibb.co/9qvwt4Y/art-banner4.jpg" alt="" /></SwiperSlide>
-            <SwiperSlide><img className='w-full' src="https://i.ibb.co/0tN5Fv7/art-banner1.jpg" alt="" /></SwiperSlide>
         </Swiper>
     );
 };

@@ -11,6 +11,8 @@ import ErrorPage from './components/ErrorPage';
 import Crafts from './components/Crafts';
 import MyCrafts from './components/MyCrafts';
 import AddCraft from './components/AddCraft.jsx';
+import { HelmetProvider } from 'react-helmet-async';
+import AuthProvider from './components/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
