@@ -13,6 +13,7 @@ import MyCrafts from './components/MyCrafts';
 import AddCraft from './components/AddCraft.jsx';
 import { HelmetProvider } from 'react-helmet-async';
 import AuthProvider from './components/AuthProvider.jsx';
+import CraftDetails from './components/CraftDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
       {
         path: "/crafts",
         element: <Crafts />,
+      },
+      {
+        path: "/details/:id",
+        element: <CraftDetails />,
+        loader: ({params}) => fetch(`http://localhost:3000/sculptures/${params.id}`)
       },
       {
         path: "/my-crafts",
