@@ -4,8 +4,6 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
@@ -25,7 +23,7 @@ const Login = () => {
                 if (location?.state?.to) {
                     navigate(location.state.to);
                 } else {
-                    toast('You have successfully logged in');
+                    alert('You have successfully logged in');
                     setTimeout(() => {
                         navigate('/');
                     }, 2000);
@@ -33,7 +31,7 @@ const Login = () => {
             })
             .catch(error => {
                 setLoading(false);
-                toast('Log in failed');
+                alert('Log in failed');
             });
     };
     const handleGoogleSignIn = () => {
@@ -42,7 +40,7 @@ const Login = () => {
             if (location?.state?.to) {
                 navigate(location.state.to);
             } else {
-                toast('You have successfully logged in');
+                alert('You have successfully logged in');
                 setTimeout(() => {
                     navigate('/');
                 }, 2000);
@@ -51,7 +49,7 @@ const Login = () => {
         .catch(error => {
             setLoading(false);
             console.error(error);
-            toast('Log in failed');
+            alert('Log in failed');
         })
     };
     const handleGithubSignIn = () => {
@@ -60,7 +58,7 @@ const Login = () => {
             if (location?.state?.to) {
                 navigate(location.state.to);
             } else {
-                toast('You have successfully logged in');
+                alert('You have successfully logged in');
                 setTimeout(() => {
                     navigate('/');
                 }, 2000);
@@ -68,7 +66,7 @@ const Login = () => {
         })
         .catch(error => {
             setLoading(false);
-            toast('Log in failed');
+            alert('Log in failed');
         })
     };
     return (
@@ -124,7 +122,6 @@ const Login = () => {
                     </p>
                 </div>
             </div>
-            <ToastContainer autoClose={2000}/>
         </div>
     );
 };

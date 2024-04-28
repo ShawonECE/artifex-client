@@ -1,7 +1,15 @@
 import { LuUserCircle } from "react-icons/lu";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from "./AuthProvider";
 
 const NavBar = () => {
+    const {user, logOutUser, loading} = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOutUser()
+        .then(res => console.log(res))
+        .catch(error => console.error(error));
+    };
     return (
         <div className="navbar bg-base-100 px-0">
             <div className="navbar-start">
@@ -51,8 +59,30 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
-                <LuUserCircle className="text-[32px]" />
-                <a className="btn">Log in</a>
+                {
+                    !loading && (user?.photoURL ?
+                        <div className="avatar tooltip tooltip-bottom" data-tip={user.displayName}>
+                            <div className="w-8 rounded-full">
+                                <img src={user.photoURL} />
+                            </div>
+                        </div>
+                        :
+                        <LuUserCircle className="text-[32px]" />)
+                }
+                {
+                    loading &&
+                    <div className="skeleton w-8 h-8 rounded-full shrink-0"></div>
+                }
+                {
+                    !loading && (user ?
+                        <button onClick={handleLogOut} className="btn">Log Out</button>
+                        :
+                        <Link to='/login'><button className="btn">Log In</button></Link>)
+                }
+                {
+                    loading &&
+                    <div className="skeleton w-24 h-12"></div>
+                }
             </div>
         </div>
     );

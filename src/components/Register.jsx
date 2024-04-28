@@ -3,8 +3,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "./AuthProvider";
 import { useContext, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
@@ -29,7 +27,7 @@ const Register = () => {
                 updateInfo(extraInfo)
             })
             .then(res => {
-                toast('Registration successful');
+                alert('Registration successful');
                 logOutUser();
                 setTimeout(() => {
                     navigate('/login', {state: {from: '/register', to: location.state ? location.state : null}});
@@ -107,7 +105,6 @@ const Register = () => {
                     </form>
                 </div>
             </div>
-            <ToastContainer autoClose={2500}/>
         </div>
     );
 };
