@@ -6,7 +6,6 @@ const AddCraft = () => {
             <Helmet>
                 <title>Artifex | Add Craft</title>
             </Helmet>
-            Here you can add craft
         </div>
     );
 };

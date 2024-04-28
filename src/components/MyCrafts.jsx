@@ -3,10 +3,12 @@ import { useContext, useState } from 'react';
 import { AuthContext } from "./AuthProvider";
 import { useEffect } from 'react';
 import MyCraftCard from "./MyCraftCard";
+import { useNavigate } from "react-router-dom";
 
 const MyCrafts = () => {
     const {user} = useContext(AuthContext);
     const [items, setItems] = useState([]);
+    const navigate = useNavigate();
     useEffect(() => {
         fetch(`http://localhost:3000/sculptures/user/${user.email}`)
         .then(res => res.json())
@@ -28,7 +30,7 @@ const MyCrafts = () => {
         });
     };
     const handleUpdate = (id) => {
-        console.log(id, "updated");
+        navigate(`/update/${id}`);
     };
     return (
         <div>

@@ -18,6 +18,7 @@ import CraftByCategory from './components/CraftByCategory';
 import Private from './components/Private';
 import Login from './components/Login';
 import Register from './components/Register.jsx';
+import Update from './components/Update';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/update/:id",
+        element: <Private><Update /></Private>,
+        loader: ({params}) => fetch(`http://localhost:3000/sculptures/${params.id}`)
       }
     ]
   },
