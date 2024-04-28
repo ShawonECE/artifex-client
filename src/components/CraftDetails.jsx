@@ -7,7 +7,7 @@ const CraftDetails = () => {
     return (
         <div className="mt-6">
             <Helmet>
-                <title>Estate Details</title>
+                <title>Artifex | Craft Details</title>
             </Helmet>
             <div className="flex justify-between">
                 <h1 className="text-3xl font-semibold">{item_name} <span className="text-lg font-medium">({subcategory_name})</span></h1>
