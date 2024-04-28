@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CategoryCard from "./CategoryCard";
+import TypeWriting from "./TypeWriting";
 
 const CategoriesInHome = () => {
     const [categories, setCategories] = useState([]);
@@ -10,7 +11,7 @@ const CategoriesInHome = () => {
     }, []);
     return (
         <div className='mt-16'>
-            <h1 className='text-center text-4xl font-bold'>Browse by Categories</h1>
+            <TypeWriting text="Browse by Categories" keywords={['Metal Sculpture', 'Clay Sculpture', 'Stone Sculpture', 'Natural Material Sculpture', 'Beaded Sculpture']}></TypeWriting>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
                 {
                     categories.map(category => <CategoryCard key={category._id} category={category}></CategoryCard>)
