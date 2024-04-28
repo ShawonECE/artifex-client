@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { CiStar } from 'react-icons/ci';
 
-const MyCraftCard = ({ craft }) => {
-    const { image, item_name, price, rating, customization, stock_status, short_description } = craft;
+const MyCraftCard = ({ craft, handleUpdate, handleDelete }) => {
+    const { image, item_name, price, rating, customization, stock_status, short_description, _id } = craft;
     return (
         <div className="card bg-base-100 shadow-xl">
             <figure><img src={image} alt="Craft" /></figure>
@@ -19,8 +19,8 @@ const MyCraftCard = ({ craft }) => {
                     <p className='text-lg font-medium'>{rating}</p>
                 </div>
                 <div className="card-actions justify-end">
-                    <button className="btn bg-slate-800 text-white">Update</button>
-                    <button className="btn bg-slate-800 text-white">Delete</button>
+                    <button onClick={() => handleUpdate(_id)} className="btn bg-slate-800 text-white">Update</button>
+                    <button onClick={() => handleDelete(_id)} className="btn bg-slate-800 text-white">Delete</button>
                 </div>
             </div>
         </div>

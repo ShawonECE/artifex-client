@@ -12,6 +12,24 @@ const MyCrafts = () => {
         .then(res => res.json())
         .then(data => setItems(data))
     }, [user]);
+    const handleDelete = (id) => {
+        fetch(`http://localhost:3000/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.deletedCount === 1) {
+                alert('Deleted successfully');
+                const remaining = items.filter(item => item._id !== id);
+                setItems(remaining);
+            } else {
+                alert('Deletion failed');
+            }
+        });
+    };
+    const handleUpdate = (id) => {
+        console.log(id, "updated");
+    };
     return (
         <div>
             <Helmet>
@@ -25,7 +43,7 @@ const MyCrafts = () => {
             }
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
                 {
-                    items.map(craft => <MyCraftCard key={craft._id} craft={craft}></MyCraftCard>)
+                    items.map(craft => <MyCraftCard key={craft._id} craft={craft} handleDelete={handleDelete} handleUpdate={handleUpdate}></MyCraftCard>)
                 }
             </div>
         </div>
