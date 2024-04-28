@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { AuthContext } from "./AuthProvider";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Update = () => {
     const { user } = useContext(AuthContext);
@@ -35,9 +36,13 @@ const Update = () => {
         .then(res => res.json())
         .then(data => {
             if (data.modifiedCount === 1) {
-                alert('Updated successfully');
+                swal("Updated successfully!", {
+                    icon: "success",
+                });
             } else {
-                alert('Failed to update');
+                swal("Failed to update!", {
+                    icon: "warning",
+                });
             }
         });
     };

@@ -28,7 +28,9 @@ const MyCraftCard = ({ craft, handleUpdate, handleDelete }) => {
 };
 
 MyCraftCard.propTypes = {
-    craft: PropTypes.object.isRequired
+    craft: PropTypes.object.isRequired,
+    handleDelete: PropTypes.func.isRequired,
+    handleUpdate: PropTypes.func.isRequired,
 };
 
 export default MyCraftCard;

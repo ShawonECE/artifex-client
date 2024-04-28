@@ -4,28 +4,44 @@ import { AuthContext } from "./AuthProvider";
 import { useEffect } from 'react';
 import MyCraftCard from "./MyCraftCard";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
 
 const MyCrafts = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [items, setItems] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
         fetch(`http://localhost:3000/sculptures/user/${user.email}`)
-        .then(res => res.json())
-        .then(data => setItems(data))
+            .then(res => res.json())
+            .then(data => setItems(data))
     }, [user]);
     const handleDelete = (id) => {
-        fetch(`http://localhost:3000/${id}`, {
-            method: 'DELETE'
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this data!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-        .then(res => res.json())
-        .then(data => {
-            if (data.deletedCount === 1) {
-                alert('Deleted successfully');
-                const remaining = items.filter(item => item._id !== id);
-                setItems(remaining);
-            } else {
-                alert('Deletion failed');
+        .then((willDelete) => {
+            if (willDelete) {
+                fetch(`http://localhost:3000/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount === 1) {
+                        swal("Poof! Data has been deleted!", {
+                            icon: "success",
+                        });
+                        const remaining = items.filter(item => item._id !== id);
+                        setItems(remaining);
+                    } else {
+                        swal("Deletion failed!", {
+                            icon: "warning",
+                        });
+                    }
+                });
             }
         });
     };
