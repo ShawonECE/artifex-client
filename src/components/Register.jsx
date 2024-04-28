@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "./AuthProvider";
 import { useContext, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import swal from 'sweetalert';
 
 const Register = () => {
     const {createUser, updateInfo, user, logOutUser} = useContext(AuthContext);
@@ -27,13 +28,18 @@ const Register = () => {
                 updateInfo(extraInfo)
             })
             .then(res => {
-                alert('Registration successful');
                 logOutUser();
-                setTimeout(() => {
-                    navigate('/login', {state: {from: '/register', to: location.state ? location.state : null}});
-                }, 2500);
+                swal("Registered successfully!", {
+                    icon: "success",
+                });
+                navigate('/login', {state: {from: '/register', to: location.state ? location.state : null}});
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error);
+                swal("Registration Failed!", {
+                    icon: "warning",
+                });
+            });
     };
     return (
         <div className="hero min-h-screen bg-base-200 rounded-2xl">

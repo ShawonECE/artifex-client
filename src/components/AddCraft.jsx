@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "./AuthProvider";
 import { useForm } from "react-hook-form";
+import swal from 'sweetalert';
 
 const AddCraft = () => {
     const { user } = useContext(AuthContext);
@@ -23,9 +24,13 @@ const AddCraft = () => {
         .then(data => {
             console.log(data);
             if (data.insertedId) {
-                alert('inserted successfully');
+                swal("Added successfully!", {
+                    icon: "success",
+                });
             } else {
-                alert('Failed to insert');
+                swal("Failed to update!", {
+                    icon: "warning",
+                });
             }
         });
     };
@@ -104,7 +109,7 @@ const AddCraft = () => {
                             <p className="text-red-500 mt-2">{errors.stock_status?.message}</p>
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn bg-slate-800 text-white" disabled={!isDirty}>Update</button>
+                            <button type="submit" className="btn bg-slate-800 text-white" disabled={!isDirty}>Add</button>
                         </div>                        
                     </form>
                 </div>

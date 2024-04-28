@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import swal from 'sweetalert';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -20,53 +21,61 @@ const Login = () => {
         const { email, password } = data;
         signInUser(email, password)
             .then(result => {
+                swal("Logged In successfully!", {
+                    icon: "success",
+                });
                 if (location?.state?.to) {
                     navigate(location.state.to);
                 } else {
-                    alert('You have successfully logged in');
-                    setTimeout(() => {
-                        navigate('/');
-                    }, 2000);
+                    navigate('/');
                 }
             })
             .catch(error => {
                 setLoading(false);
-                alert('Log in failed');
+                console.error(error);
+                swal("Log In Failed!", {
+                    icon: "warning",
+                });
             });
     };
     const handleGoogleSignIn = () => {
         signInWithGoogle()
         .then(result => {
+            swal("Logged In successfully!", {
+                icon: "success",
+            });
             if (location?.state?.to) {
                 navigate(location.state.to);
             } else {
-                alert('You have successfully logged in');
-                setTimeout(() => {
-                    navigate('/');
-                }, 2000);
+                navigate('/');
             }
         })
         .catch(error => {
             setLoading(false);
             console.error(error);
-            alert('Log in failed');
+            swal("Log In Failed!", {
+                icon: "warning",
+            });
         })
     };
     const handleGithubSignIn = () => {
         signInWithGithub()
         .then(result => {
+            swal("Logged In successfully!", {
+                icon: "success",
+            });
             if (location?.state?.to) {
                 navigate(location.state.to);
             } else {
-                alert('You have successfully logged in');
-                setTimeout(() => {
-                    navigate('/');
-                }, 2000);
+                navigate('/');
             }
         })
         .catch(error => {
             setLoading(false);
-            alert('Log in failed');
+            console.error(error);
+            swal("Log In Failed!", {
+                icon: "warning",
+            });
         })
     };
     return (
