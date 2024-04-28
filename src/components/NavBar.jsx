@@ -2,6 +2,7 @@ import { LuUserCircle } from "react-icons/lu";
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from "./AuthProvider";
+import { Tooltip } from 'react-tooltip';
 
 const NavBar = () => {
     const {user, logOutUser, loading} = useContext(AuthContext);
@@ -61,7 +62,7 @@ const NavBar = () => {
             <div className="navbar-end gap-2">
                 {
                     !loading && (user?.photoURL ?
-                        <div className="avatar tooltip tooltip-bottom" data-tip={user.displayName}>
+                        <div className="avatar" data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} >
                             <div className="w-8 rounded-full">
                                 <img src={user.photoURL} />
                             </div>
@@ -69,6 +70,7 @@ const NavBar = () => {
                         :
                         <LuUserCircle className="text-[32px]" />)
                 }
+                <Tooltip id="my-tooltip" place="left-start" />
                 {
                     loading &&
                     <div className="skeleton w-8 h-8 rounded-full shrink-0"></div>
