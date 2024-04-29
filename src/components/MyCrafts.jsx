@@ -11,6 +11,7 @@ const MyCrafts = () => {
     const [selectedValue, setSelectedValue] = useState('Filter');
     const [items, setItems] = useState([]);
     const [filtered, setFiltered] = useState([]);
+    const [loaded, setLoaded] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
         fetch(`https://artifex-server.vercel.app/sculptures/user/${user.email}`)
@@ -18,6 +19,7 @@ const MyCrafts = () => {
             .then(data => {
                 setItems(data);
                 setFiltered(data);
+                setLoaded(true);
             })
     }, [user]);
     const handleFilter = (e) => {
@@ -74,10 +76,10 @@ const MyCrafts = () => {
                 <title>Artifex | My Crafts</title>
             </Helmet>
             {
-                !items.length && <h1 className="text-3xl font-bold text-center mt-10">You did not add any crafts yet</h1>
+                !items.length && loaded && <h1 className="text-3xl font-bold text-center mt-10">You did not add any crafts yet</h1>
             }
             {
-                items.length && <h1 className="text-3xl font-bold text-center mt-10">Crafts added by you</h1>
+                items.length && loaded && <h1 className="text-3xl font-bold text-center mt-10">Crafts added by you</h1>
             }
             <div className="flex justify-center mt-8">
                 <select value={selectedValue} onChange={handleFilter} className="select max-w-xs bg-gray-100 text-lg font-semibold">
@@ -88,6 +90,14 @@ const MyCrafts = () => {
                 </select>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+                {
+                    !loaded &&
+                    <>
+                        <div className="skeleton h-48"></div>
+                        <div className="skeleton h-48"></div>
+                        <div className="skeleton h-48"></div>
+                    </>
+                }
                 {
                     filtered.map(craft => <MyCraftCard key={craft._id} craft={craft} handleDelete={handleDelete} handleUpdate={handleUpdate}></MyCraftCard>)
                 }
