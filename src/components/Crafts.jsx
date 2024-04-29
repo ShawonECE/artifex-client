@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
-import CraftCard from "./CraftCard";
 import { Helmet } from "react-helmet-async";
+import CraftRow from "./CraftRow";
 
 const Crafts = () => {
     const items = useLoaderData();
@@ -10,10 +10,23 @@ const Crafts = () => {
                 <title>Artifex | Crafts</title>
             </Helmet>
             <h1 className="text-3xl font-bold text-center mt-10">Here is all Crafts & Sculptures</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
-                {
-                    items.map(craft => <CraftCard key={craft._id} craft={craft}></CraftCard>)
-                }
+            <div className="overflow-x-auto mt-8">
+                <table className="table table-zebra">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            items.map(craft => <CraftRow key={craft._id} craft={craft}></CraftRow>)
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     );

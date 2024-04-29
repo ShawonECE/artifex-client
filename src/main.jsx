@@ -33,17 +33,17 @@ const router = createBrowserRouter([
       {
         path: "/crafts",
         element: <Crafts />,
-        loader: () => fetch(`http://localhost:3000/sculptures`)
+        loader: () => fetch(`https://artifex-server.vercel.app/sculptures`)
       },
       {
         path: "/crafts-by-category/:category",
         element: <CraftByCategory />,
-        loader: ({params}) => fetch(`http://localhost:3000/sculptures/categories/${params.category}`)
+        loader: ({params}) => fetch(`https://artifex-server.vercel.app/sculptures/categories/${params.category}`)
       },
       {
         path: "/details/:id",
         element: <Private><CraftDetails /></Private>,
-        loader: ({params}) => fetch(`http://localhost:3000/sculptures/${params.id}`)
+        loader: ({params}) => fetch(`https://artifex-server.vercel.app/sculptures/${params.id}`)
       },
       {
         path: "/my-crafts",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <Private><Update /></Private>,
-        loader: ({params}) => fetch(`http://localhost:3000/sculptures/${params.id}`)
+        loader: ({params}) => fetch(`https://artifex-server.vercel.app/sculptures/${params.id}`)
       }
     ]
   },

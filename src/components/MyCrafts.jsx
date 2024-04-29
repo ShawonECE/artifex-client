@@ -13,7 +13,7 @@ const MyCrafts = () => {
     const [filtered, setFiltered] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-        fetch(`http://localhost:3000/sculptures/user/${user.email}`)
+        fetch(`https://artifex-server.vercel.app/sculptures/user/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setItems(data);
@@ -44,7 +44,7 @@ const MyCrafts = () => {
         })
         .then((willDelete) => {
             if (willDelete) {
-                fetch(`http://localhost:3000/${id}`, {
+                fetch(`https://artifex-server.vercel.app/${id}`, {
                     method: 'DELETE'
                 })
                 .then(res => res.json())
@@ -55,6 +55,7 @@ const MyCrafts = () => {
                         });
                         const remaining = items.filter(item => item._id !== id);
                         setItems(remaining);
+                        setFiltered(remaining);
                     } else {
                         swal("Deletion failed!", {
                             icon: "warning",

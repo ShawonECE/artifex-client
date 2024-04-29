@@ -26,7 +26,7 @@ const Update = () => {
         }
     });
     const onSubmit = (data) => {
-        fetch(`http://localhost:3000/${craft._id}`, {
+        fetch(`https://artifex-server.vercel.app/${craft._id}`, {
             headers: {
                 'Content-Type': 'application/json'
             },

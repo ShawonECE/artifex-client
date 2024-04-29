@@ -13,7 +13,7 @@ const AddCraft = () => {
     } = useForm();
     const onSubmit = (data) => {
         const newData = {...data, userEmail: user.email};
-        fetch(`http://localhost:3000`, {
+        fetch(`https://artifex-server.vercel.app`, {
             headers: {
                 'Content-Type': 'application/json'
             },

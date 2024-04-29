@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
+import { CiStar } from 'react-icons/ci';
 import { useNavigate } from "react-router-dom";
-import { CiStar } from "react-icons/ci";
 
 const CraftCard = ({craft}) => {
     const navigate = useNavigate();
-    const {item_name, processing_time, rating, subcategory_name, price, stock_status, image, short_description, _id} = craft;
+    const {image, rating, item_name, subcategory_name, price, stock_status, _id, short_description, processing_time} = craft;
     const handleViewDetails = () => {
         navigate(`/details/${_id}`);
     };
