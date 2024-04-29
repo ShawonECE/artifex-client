@@ -3,7 +3,7 @@ import { FaArtstation } from "react-icons/fa";
 const Footer = () => {
     return (
         <>
-            <footer className="footer footer-center p-10 bg-base-200 mt-10">
+            <footer className="footer footer-center p-10 bg-base-200 dark:bg-gray-950 dark:text-white mt-10">
                 <aside>
                     <FaArtstation className="text-4xl" />
                     <p className="font-bold">

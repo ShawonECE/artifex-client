@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const FeaturedCard = ({craft}) => {
     const {image, artist, artist_img} = craft;
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 dark:bg-gray-800 dark:text-white shadow-xl">
             <figure><img src={image} alt="craft" /></figure>
             <div className='card-body'>
                 <div className="flex gap-5">

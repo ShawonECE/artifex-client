@@ -42,21 +42,21 @@ const Register = () => {
             });
     };
     return (
-        <div className="hero min-h-screen bg-base-200 rounded-2xl">
+        <div className="hero min-h-screen bg-base-200 dark:bg-gray-800 rounded-2xl">
             <Helmet>
                 <title>Artifex | Register</title>
             </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Register to create new account</h1>
+                    <h1 className="text-5xl font-bold dark:text-white">Register to create new account</h1>
                 </div>
-                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-gray-800">
                     <form className="card-body" onSubmit={handleSubmit(onSubmit)} noValidate>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text dark:text-white">Name</span>
                             </label>
-                            <input type="text" placeholder="Enter your name" className="input input-bordered" {...register("name", { 
+                            <input type="text" placeholder="Enter your name" className="input input-bordered dark:text-white dark:bg-gray-700" {...register("name", { 
                                 required: 'Name is required',
                                 pattern: {
                                     value: /^[a-zA-Z\s]+$/,
@@ -66,9 +66,9 @@ const Register = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span className="label-text dark:text-white">Email</span>
                             </label>
-                            <input type="email" placeholder="Enter your email" className="input input-bordered" {...register("email", { 
+                            <input type="email" placeholder="Enter your email" className="input input-bordered dark:text-white dark:bg-gray-700" {...register("email", { 
                                 required: 'Email is required',
                                 pattern: {
                                     value: /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,}$/,
@@ -78,16 +78,16 @@ const Register = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Photo URL</span>
+                                <span className="label-text dark:text-white">Photo URL</span>
                             </label>
-                            <input type="url" placeholder="Enter your photo url" className="input input-bordered" {...register("photoURL", { required: 'Photo URL is required' })} />
+                            <input type="url" placeholder="Enter your photo url" className="input input-bordered dark:text-white dark:bg-gray-700" {...register("photoURL", { required: 'Photo URL is required' })} />
                             <p className="text-red-500 mt-2">{errors.photoURL?.message}</p>
                         </div>
                         <div className="form-control relative">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span className="label-text dark:text-white">Password</span>
                             </label>
-                            <input type={showPassword ? 'text' : 'password'} placeholder="Enter password" className="input input-bordered" {...register("password", {
+                            <input type={showPassword ? 'text' : 'password'} placeholder="Enter password" className="input input-bordered dark:text-white dark:bg-gray-700" {...register("password", {
                                 required: 'Password is required', 
                                 pattern: {
                                     value: /(?=.*[a-z])(?=.*[A-Z]).{6,}/,
@@ -96,9 +96,9 @@ const Register = () => {
                             })} />
                             {
                                 showPassword ? 
-                                <FaRegEyeSlash onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg" />
+                                <FaRegEyeSlash onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg dark:text-white" />
                                 :
-                                <FaRegEye onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg" />
+                                <FaRegEye onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg dark:text-white" />
                             }
                             <p className="text-red-500 mt-2">{errors.password?.message}</p>
                         </div>
@@ -106,7 +106,7 @@ const Register = () => {
                             <button type="submit" className="btn bg-slate-800 text-white" disabled={user}>Register</button>
                         </div>
                         <p className="text-center">
-                            <Link to='/login' className="label-text-alt link link-hover">Already have an account?</Link>
+                            <Link to='/login' className="label-text-alt link link-hover dark:text-white">Already have an account?</Link>
                         </p>
                     </form>
                 </div>

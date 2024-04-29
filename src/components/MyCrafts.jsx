@@ -82,7 +82,7 @@ const MyCrafts = () => {
                 items.length && loaded && <h1 className="text-3xl font-bold text-center mt-10">Crafts added by you</h1>
             }
             <div className="flex justify-center mt-8">
-                <select value={selectedValue} onChange={handleFilter} className="select max-w-xs bg-gray-100 text-lg font-semibold">
+                <select value={selectedValue} onChange={handleFilter} className="select max-w-xs bg-gray-100 dark:bg-gray-200 text-lg font-semibold">
                     <option disabled>Filter</option>
                     <option>No filter</option>
                     <option>Customizable</option>

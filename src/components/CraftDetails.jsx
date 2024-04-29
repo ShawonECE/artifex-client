@@ -5,7 +5,7 @@ const CraftDetails = () => {
     const craft = useLoaderData();
     const {image, item_name, subcategory_name, short_description, price, rating, customization, processing_time, stock_status} = craft;
     return (
-        <div className="mt-6">
+        <div className="mt-6 dark:text-white">
             <Helmet>
                 <title>Artifex | Craft Details</title>
             </Helmet>

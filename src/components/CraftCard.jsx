@@ -9,7 +9,7 @@ const CraftCard = ({craft}) => {
         navigate(`/details/${_id}`);
     };
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 dark:bg-gray-800 dark:text-white shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="text-2xl font-bold">{item_name} <span className='text-base font-medium'>({subcategory_name})</span>

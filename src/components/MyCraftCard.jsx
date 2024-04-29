@@ -4,7 +4,7 @@ import { CiStar } from 'react-icons/ci';
 const MyCraftCard = ({ craft, handleUpdate, handleDelete }) => {
     const { image, item_name, price, rating, customization, stock_status, short_description, _id } = craft;
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 dark:bg-gray-800 dark:text-white shadow-xl">
             <figure><img src={image} alt="Craft" /></figure>
             <div className="card-body">
                 <h2 className="text-2xl font-bold">{item_name}</h2>

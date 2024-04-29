@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from "./AuthProvider";
 import { Tooltip } from 'react-tooltip';
+import ThemeBtn from "./ThemeBtn";
 
 const NavBar = () => {
     const {user, logOutUser, loading} = useContext(AuthContext);
@@ -12,13 +13,13 @@ const NavBar = () => {
         .catch(error => console.error(error));
     };
     return (
-        <div className="navbar bg-base-100 px-0">
+        <div className="navbar bg-base-100 dark:bg-gray-800 dark:text-white px-0">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 dark:bg-gray-700 rounded-box w-52">
                         <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/crafts">Crafts</NavLink></li>
                         <li>
@@ -45,7 +46,7 @@ const NavBar = () => {
                     <li>
                         <details>
                             <summary>Categories</summary>
-                            <ul className="p-2 z-10">
+                            <ul className="p-2 z-10 dark:bg-gray-700">
                                 <li><NavLink to="crafts-by-category/Clay Sculpture">Clay Sculpture</NavLink></li>
                                 <li><NavLink to="crafts-by-category/Stone Sculpture">Stone Sculpture</NavLink></li>
                                 <li><NavLink to="crafts-by-category/Beaded Sculpture">Beaded Sculpture</NavLink></li>
@@ -60,6 +61,7 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
+                <ThemeBtn></ThemeBtn>
                 {
                     !loading && (user?.photoURL ?
                         <div className="avatar" data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} >
@@ -77,9 +79,9 @@ const NavBar = () => {
                 }
                 {
                     !loading && (user ?
-                        <button onClick={handleLogOut} className="btn">Log Out</button>
+                        <button onClick={handleLogOut} className="btn dark:bg-transparent dark:text-white">Log Out</button>
                         :
-                        <Link to='/login'><button className="btn">Log In</button></Link>)
+                        <Link to='/login'><button className="btn dark:bg-transparent dark:text-white">Log In</button></Link>)
                 }
                 {
                     loading &&

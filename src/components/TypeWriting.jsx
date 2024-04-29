@@ -4,7 +4,7 @@ import { Typewriter } from 'react-simple-typewriter';
 const TypeWriting = ({text, keywords}) => {
     return (
         <div>
-            <h1 className='text-center text-4xl font-bold'>
+            <h1 className='text-center text-4xl font-bold dark:text-white'>
                 {text}...{' '}
                 <span className='text-orange-400'>
                     <Typewriter

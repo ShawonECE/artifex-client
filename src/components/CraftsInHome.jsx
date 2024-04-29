@@ -32,7 +32,7 @@ const CraftsInHome = () => {
                 }
             </div>
             <div className='flex justify-center mt-8'>
-                <button onClick={() => navigate('/crafts')} className='btn'>See all</button>
+                <button onClick={() => navigate('/crafts')} className='btn dark:bg-transparent dark:text-white'>See all</button>
             </div>
         </div>
     );

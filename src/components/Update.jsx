@@ -53,71 +53,71 @@ const Update = () => {
             </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Update Craft & Sculpture info!</h1>
+                    <h1 className="text-5xl font-bold dark:text-white">Update Craft & Sculpture info!</h1>
                 </div>
-                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-gray-800">
                     <form className="card-body" onSubmit={handleSubmit(onSubmit)} noValidate>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Item Name</span>
+                                <span className="label-text dark:text-white">Item Name</span>
                             </label>
-                            <input type="text" className="input input-bordered" {...register("item_name", { required: 'Item name is required' })} />
+                            <input type="text" className="input input-bordered dark:text-white dark:bg-gray-700" {...register("item_name", { required: 'Item name is required' })} />
                             <p className="text-red-500 mt-2">{errors.item_name?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Sub-category</span>
+                                <span className="label-text dark:text-white">Sub-category</span>
                             </label>
-                            <input type="text" className="input input-bordered" {...register("subcategory_name", { required: 'Subcategory Name is required' })}/>
+                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("subcategory_name", { required: 'Subcategory Name is required' })}/>
                             <p className="text-red-500 mt-2">{errors.subcategory_name?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Image URL</span>
+                                <span className="label-text dark:text-white">Image URL</span>
                             </label>
-                            <input type="url" className="input input-bordered" {...register("image", { required: 'Image URL is required' })}/>
+                            <input type="url" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("image", { required: 'Image URL is required' })}/>
                             <p className="text-red-500 mt-2">{errors.image?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Short Description</span>
+                                <span className="label-text dark:text-white">Short Description</span>
                             </label>
-                            <input type="text" className="input input-bordered" {...register("short_description", { required: 'Short Description is required' })}/>
+                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("short_description", { required: 'Short Description is required' })}/>
                             <p className="text-red-500 mt-2">{errors.short_description?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Price</span>
+                                <span className="label-text dark:text-white">Price</span>
                             </label>
-                            <input type="text" className="input input-bordered" {...register("price", { required: 'Price is required' })}/>
+                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("price", { required: 'Price is required' })}/>
                             <p className="text-red-500 mt-2">{errors.price?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Rating</span>
+                                <span className="label-text dark:text-white">Rating</span>
                             </label>
-                            <input type="text" className="input input-bordered" {...register("rating", { required: 'Rating is required' })}/>
+                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("rating", { required: 'Rating is required' })}/>
                             <p className="text-red-500 mt-2">{errors.image?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Processing Time</span>
+                                <span className="label-text dark:text-white">Processing Time</span>
                             </label>
-                            <input type="text" className="input input-bordered" {...register("processing_time", { required: 'Image URL is required' })}/>
+                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("processing_time", { required: 'Image URL is required' })}/>
                             <p className="text-red-500 mt-2">{errors.processing_time?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Customizable</span>
+                                <span className="label-text dark:text-white">Customizable</span>
                             </label>
-                            <input type="text" className="input input-bordered" {...register("customization", { required: 'Customizable is required' })}/>
+                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("customization", { required: 'Customizable is required' })}/>
                             <p className="text-red-500 mt-2">{errors.customization?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Stock Status</span>
+                                <span className="label-text dark:text-white">Stock Status</span>
                             </label>
-                            <input type="text" className="input input-bordered" {...register("stock_status", { required: 'Stock Status is required' })}/>
+                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("stock_status", { required: 'Stock Status is required' })}/>
                             <p className="text-red-500 mt-2">{errors.stock_status?.message}</p>
                         </div>
                         <div className="form-control mt-6">

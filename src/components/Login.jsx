@@ -79,15 +79,15 @@ const Login = () => {
         })
     };
     return (
-        <div className="hero min-h-screen bg-base-200 rounded-2xl">
+        <div className="hero min-h-screen bg-base-200 dark:bg-gray-800 rounded-2xl">
             <Helmet>
                 <title>Artifex | Log In</title>
             </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Login here to get all access!</h1>
+                    <h1 className="text-5xl font-bold dark:text-white">Login here to get all access!</h1>
                 </div>
-                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-gray-800">
                     <form className="card-body" onSubmit={handleSubmit(onSubmit)} noValidate>
                         {
                             location.state?.from === '/register' &&
@@ -95,9 +95,9 @@ const Login = () => {
                         }
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span className="label-text dark:text-white">Email</span>
                             </label>
-                            <input type="email" placeholder="Enter your email" className="input input-bordered" {...register("email", { 
+                            <input type="email" placeholder="Enter your email" className="input input-bordered dark:text-white dark:bg-gray-700" {...register("email", { 
                                 required: 'Email is required',
                                 pattern: {
                                     value: /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,}$/,
@@ -107,16 +107,16 @@ const Login = () => {
                         </div>
                         <div className="form-control relative">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span className="label-text dark:text-white">Password</span>
                             </label>
-                            <input type={showPassword ? 'text' : 'password'} placeholder="Enter password" className="input input-bordered" {...register("password", {
+                            <input type={showPassword ? 'text' : 'password'} placeholder="Enter password" className="input input-bordered dark:text-white dark:bg-gray-700" {...register("password", {
                                 required: 'Password is required', 
                             })} />
                             {
                                 showPassword ? 
-                                <FaRegEyeSlash onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg" />
+                                <FaRegEyeSlash onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg dark:text-white" />
                                 :
-                                <FaRegEye onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg" />
+                                <FaRegEye onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg dark:text-white" />
                             }
                             <p className="text-red-500 mt-2">{errors.password?.message}</p>
                         </div>
@@ -127,7 +127,7 @@ const Login = () => {
                     <button onClick={handleGoogleSignIn} className="btn mx-8 -mt-6 mb-2" disabled={user}><FaGoogle />Log in with Google</button>
                     <button onClick={handleGithubSignIn} className="btn mx-8 mb-3" disabled={user}><FaGithub />Log in with GitHub</button>
                     <p className="text-center mb-8">
-                        <Link to='/register' state={location.state?.to} className="label-text-alt link link-hover">Don&apos;t have an account? Register now</Link>
+                        <Link to='/register' state={location.state?.to} className="label-text-alt link link-hover dark:text-white">Don&apos;t have an account? Register now</Link>
                     </p>
                 </div>
             </div>
