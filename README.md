@@ -19,7 +19,7 @@ Artifex is a website built to showcase and sell handcrafted creations, from intr
 - New users can easily register by providing their name, email, photo, and password, enabling them to access all features of the website. Powered by Firebase authentication and user management.
 - Logged-in users can conveniently update their uploaded craft information, ensuring craft's information is always up-to-date. Powered by Firebase user management.
 
-### Used packages for challenges
+### Used packages
 ---
 
 - React-simple-typewriter to show typing effects on the texts in the home page.
