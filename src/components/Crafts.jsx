@@ -11,7 +11,7 @@ const Crafts = () => {
             </Helmet>
             <h1 className="text-3xl font-bold text-center mt-10">Here is all Crafts & Sculptures</h1>
             <div className="overflow-x-auto mt-8">
-                <table className="table dark:bg-gray-700 dark:text-white">
+                <table className="table dark:bg-gray-800 dark:text-white">
                     <thead>
                         <tr className="dark:text-white">
                             <th>Item Name</th>

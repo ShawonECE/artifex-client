@@ -1,17 +1,14 @@
-import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { AuthContext } from "./AuthProvider";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const Update = () => {
-    const { user } = useContext(AuthContext);
     const craft = useLoaderData();
     const {
         register,
         handleSubmit,
-        formState: { errors, isDirty }
+        formState: { errors }
     } = useForm({
         defaultValues: {
             item_name: craft.item_name,
@@ -34,8 +31,8 @@ const Update = () => {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(data => {
-            if (data.modifiedCount === 1) {
+        .then(result => {
+            if (result.modifiedCount === 1) {
                 swal("Updated successfully!", {
                     icon: "success",
                 });
@@ -68,7 +65,14 @@ const Update = () => {
                             <label className="label">
                                 <span className="label-text dark:text-white">Sub-category</span>
                             </label>
-                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("subcategory_name", { required: 'Subcategory Name is required' })}/>
+                            <select className="select bg-gray-100 dark:bg-gray-700 dark:text-white text-lg font-semibold" {...register("subcategory_name", { required: 'Subcategory Name is required' })}>
+                                <option>Metal Sculpture</option>
+                                <option>Clay Sculpture</option>
+                                <option>Stone Sculpture</option>
+                                <option>Beaded Sculpture</option>
+                                <option>Natural Material Sculpture</option>
+                                <option>Food carving</option>
+                            </select>
                             <p className="text-red-500 mt-2">{errors.subcategory_name?.message}</p>
                         </div>
                         <div className="form-control">
@@ -110,18 +114,24 @@ const Update = () => {
                             <label className="label">
                                 <span className="label-text dark:text-white">Customizable</span>
                             </label>
-                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("customization", { required: 'Customizable is required' })}/>
+                            <select className="select bg-gray-100 dark:bg-gray-700 dark:text-white text-lg font-semibold" {...register("customization", { required: 'Customizable is required' })}>
+                                <option>yes</option>
+                                <option>no</option>
+                            </select>
                             <p className="text-red-500 mt-2">{errors.customization?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text dark:text-white">Stock Status</span>
                             </label>
-                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("stock_status", { required: 'Stock Status is required' })}/>
+                            <select className="select bg-gray-100 dark:bg-gray-700 dark:text-white text-lg font-semibold" {...register("stock_status", { required: 'Stock Status is required' })}>
+                                <option>In stock</option>
+                                <option>Made to Order</option>
+                            </select>
                             <p className="text-red-500 mt-2">{errors.stock_status?.message}</p>
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn bg-slate-800 text-white" disabled={!isDirty}>Update</button>
+                            <button type="submit" className="btn bg-slate-800 text-white">Update</button>
                         </div>                        
                     </form>
                 </div>

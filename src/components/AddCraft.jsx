@@ -9,8 +9,15 @@ const AddCraft = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors, isDirty }
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            customization: "",
+            stock_status: "",
+            subcategory_name: "",
+        }
+    });
     const onSubmit = (data) => {
         const newData = {...data, userEmail: user.email};
         fetch(`https://artifex-server.vercel.app`, {
@@ -22,8 +29,8 @@ const AddCraft = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if (data.insertedId) {
+                reset();
                 swal("Added successfully!", {
                     icon: "success",
                 });
@@ -56,7 +63,14 @@ const AddCraft = () => {
                             <label className="label">
                                 <span className="label-text dark:text-white">Sub-category</span>
                             </label>
-                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("subcategory_name", { required: 'Subcategory Name is required' })}/>
+                            <select className="select bg-gray-100 dark:bg-gray-700 dark:text-white text-lg font-semibold" {...register("subcategory_name", { required: 'Subcategory Name is required' })}>
+                                <option>Metal Sculpture</option>
+                                <option>Clay Sculpture</option>
+                                <option>Stone Sculpture</option>
+                                <option>Beaded Sculpture</option>
+                                <option>Natural Material Sculpture</option>
+                                <option>Food carving</option>
+                            </select>
                             <p className="text-red-500 mt-2">{errors.subcategory_name?.message}</p>
                         </div>
                         <div className="form-control">
@@ -98,14 +112,20 @@ const AddCraft = () => {
                             <label className="label">
                                 <span className="label-text dark:text-white">Customizable</span>
                             </label>
-                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("customization", { required: 'Customizable is required' })}/>
+                            <select className="select bg-gray-100 dark:bg-gray-700 dark:text-white text-lg font-semibold" {...register("customization", { required: 'Customizable is required' })}>
+                                <option>yes</option>
+                                <option>no</option>
+                            </select>
                             <p className="text-red-500 mt-2">{errors.customization?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text dark:text-white">Stock Status</span>
                             </label>
-                            <input type="text" className="input input-bordered dark:bg-gray-700 dark:text-white" {...register("stock_status", { required: 'Stock Status is required' })}/>
+                            <select className="select bg-gray-100 dark:bg-gray-700 dark:text-white text-lg font-semibold" {...register("stock_status", { required: 'Stock Status is required' })}>
+                                <option>In stock</option>
+                                <option>Made to Order</option>
+                            </select>
                             <p className="text-red-500 mt-2">{errors.stock_status?.message}</p>
                         </div>
                         <div className="form-control mt-6">
